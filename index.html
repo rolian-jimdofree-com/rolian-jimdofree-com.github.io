@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enti-i</title>
+  <link rel="icon" type="image/png" href="https://image.jimcdn.com/app/cms/image/transf/none/path/s66f909ec2da79914/image/ib50a55eddb4cebfc/version/1736023195/image.png">
+  <style>
+    /* Allgemeines Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #000; /* Schwarzer Hintergrund */
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin: 0 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    nav a:hover {
+      background: linear-gradient(45deg, #ff6b6b, #845ef7);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Logo */
+    .logo-container {
+      text-align: center;
+      margin: 120px 0 20px;
+    }
+
+    .logo {
+      width: 150px;
+      animation: logo-move 2s ease-out;
+    }
+
+    @keyframes logo-move {
+      0% { transform: translateX(-300px); }
+      50% { transform: translateX(300px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Buttons */
+    .button-container {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cool-button {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
+      background-size: 200% 200%;
+      cursor: pointer;
+      margin: 20px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s ease;
+      animation: gradient-move 3s linear infinite;
+    }
+
+    .cool-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      position: relative;
+      margin-top: 50px;
+      width: 100%;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Inhalte */
+    .content {
+      margin: 50px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    // Copyright-Jahr automatisch aktualisieren
+    function updateYear() {
+      const yearSpan = document.getElementById('year');
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Aktualisiere das Jahr beim Laden der Seite
+    window.onload = updateYear;
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">Über</a>
+    <a href="#projects">Projekte</a>
+  </nav>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s66f909ec2da79914/image/ib50a55eddb4cebfc/version/1736023195/image.png" alt="Logo" class="logo">
+  </div>
+
+  <!-- Inhalt -->
+  <div class="content" id="home">
+    <h1>Willkommen bei Enti-i</h1>
+    <p>Das Projekt, das die Zukunft verändert!</p>
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-container">
+    <a class="cool-button" href="https://studio.penguinmod.com/#8571611865" target="_blank">EntiOS</a>
+    <a class="cool-button" href="https://enticraft.github.io" target="_blank">Enticraft</a>
+    <a class="cool-button" href="https://mikro-os.jimdofree.com" target="_blank">Mikro</a>
+  </div>
+
+  <!-- Über-Seite -->
+  <div class="content" id="about">
+    <h2>Über Enti-i</h2>
+    <p>Enti-i ist ein innovatives Projekt, das HTML- und Linux-basierte Betriebssysteme vereint.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; <span id="year"></span> Enti-i. Alle Rechte vorbehalten.
+  </footer>
+
+</body>
+</html>
+
