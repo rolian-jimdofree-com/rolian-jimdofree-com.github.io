@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coole Website</title>
+  <style>
+    /* Allgemeines Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      color: white;
+      overflow: hidden;
+    }
+
+    /* Logo Styling und Animation */
+    .logo-container {
+      text-align: center;
+      margin: 50px 0;
+    }
+    .logo {
+      width: 150px;
+      animation: logo-move 3s ease-in-out infinite;
+    }
+
+    @keyframes logo-move {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-200px); }
+      50% { transform: translateX(200px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Button Styling */
+    .button-container {
+      text-align: center;
+      margin: 50px;
+    }
+    .cool-button {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #ff6b6b, #f06595, #845ef7);
+      background-size: 200% 200%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      animation: gradient-move 3s linear infinite;
+    }
+
+    .cool-button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Link Styling */
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .link {
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .link:hover {
+      background: white;
+      color: #1e3c72;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s66f909ec2da79914/image/ib50a55eddb4cebfc/version/1736023195/image.png" alt="Logo" class="logo">
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-container">
+    <button class="cool-button" onclick="window.open('https://studio.penguinmod.com/#8571611865', '_blank')">Zu Projekt 1</button>
+    <button class="cool-button" onclick="window.open('https://enticraft.github.io', '_blank')">Zu Projekt 2</button>
+  </div>
+
+  <!-- Links -->
+  <div class="links">
+    <a href="https://studio.penguinmod.com/#8571611865" target="_blank" class="link">Projekt 1</a>
+    <a href="https://enticraft.github.io" target="_blank" class="link">Projekt 2</a>
+  </div>
+
+</body>
+</html>
+
