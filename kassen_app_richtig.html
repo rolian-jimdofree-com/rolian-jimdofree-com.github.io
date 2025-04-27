@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Kassen-App verbessert</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; margin: 0; padding: 20px; }
+    .container { background: white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; }
+    h1, h2 { text-align: center; }
+    input, select, button { padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 5px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .btn-remove { background: #e74c3c; color: white; border: none; }
+    .btn-install { background: #3498db; color: white; border: none; }
+    .btn-generate { background: #2ecc71; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kassen-App</h1>
+
+    <h2>Neues Produkt erstellen</h2>
+    <input type="text" id="productName" placeholder="Produktname">
+    <input type="number" id="productPrice" placeholder="Preis (€)">
+    <button onclick="addAvailableProduct()">Produkt zur Liste hinzufügen</button>
+
+    <h2>Verfügbare Produkte</h2>
+    <div id="availableProducts"></div>
+
+    <h2>Produkte im Warenkorb</h2>
+    <div id="cart"></div>
+
+    <h2>Rechnung erstellen</h2>
+    <select id="companyName">
+      <option value="Firma A">Firma A</option>
+      <option value="Firma B">Firma B</option>
+      <option value="Firma C">Firma C</option>
+    </select>
+    <button onclick="generateInvoice()" class="btn-generate">Rechnung erstellen</button>
+    <div id="invoice"></div>
+  </div>
+
+<script>
+  var availableProducts = [
+    { name: "Apfel", price: 0.99 },
+    { name: "Brot", price: 2.49 },
+    { name: "Milch", price: 1.19 },
+    { name: "Käse", price: 3.79 }
+  ];
+  var cart = [];
+
+  function randomProductNumber() {
+    return Math.floor(Math.random() * 90000) + 10000;
+  }
+
+  function addAvailableProduct() {
+    var name = document.getElementById('productName').value;
+    var price = parseFloat(document.getElementById('productPrice').value);
+    if (name && !isNaN(price)) {
+      availableProducts.push({ name: name, price: price });
+      updateAvailableProducts();
+      document.getElementById('productName').value = '';
+      document.getElementById('productPrice').value = '';
+    } else {
+      alert('Bitte gültigen Namen und Preis eingeben!');
+    }
+  }
+
+  function installProduct(index) {
+    var p = availableProducts[index];
+    cart.push({ id: randomProductNumber(), name: p.name, price: p.price });
+    updateCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function updateAvailableProducts() {
+    var html = '<table><tr><th>Name</th><th>Preis (€)</th><th>Aktion</th></tr>';
+    for (var i = 0; i < availableProducts.length; i++) {
+      html += '<tr><td>' + availableProducts[i].name + '</td><td>' + availableProducts[i].price.toFixed(2) + '</td><td><button class="btn-install" onclick="installProduct(' + i + ')">Installieren</button></td></tr>';
+    }
+    html += '</table>';
+    document.getElementById('availableProducts').innerHTML = html;
+  }
+
+  function updateCart() {
+    var html = '<table><tr><th>Produktnummer</th><th>Name</th><th>Preis (€)</th><th>Aktion</th></tr>';
+    for (var i = 0; i < cart.length; i++) {
+      html += '<tr><td>' + cart[i].id + '</td><td>' + cart[i].name + '</td><td>' + cart[i].price.toFixed(2) + '</td><td><button class="btn-remove" onclick="removeFromCart(' + i + ')">Entfernen</button></td></tr>';
+    }
+    html += '</table>';
+    document.getElementById('cart').innerHTML = html;
+  }
+
+  function generateInvoice() {
+    var company = document.getElementById('companyName').value;
+    var total = 0;
+    var html = '<h3>Rechnung - ' + company + '</h3><table><tr><th>Produkt</th><th>Preis (€)</th></tr>';
+    for (var i = 0; i < cart.length; i++) {
+      html += '<tr><td>' + cart[i].name + '</td><td>' + cart[i].price.toFixed(2) + '</td></tr>';
+      total += cart[i].price;
+    }
+    html += '<tr><td><strong>Gesamt</strong></td><td><strong>' + total.toFixed(2) + ' €</strong></td></tr></table>';
+    document.getElementById('invoice').innerHTML = html;
+  }
+
+  updateAvailableProducts();
+</script>
+
+</body>
+</html>
